@@ -1,2 +1,7 @@
 node_modules/
 dist/
+
+# Vite/CRXJS build artifacts (generated at root)
+manifest.json
+service-worker-loader.js
+assets/
