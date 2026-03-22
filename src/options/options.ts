@@ -74,7 +74,9 @@ document.addEventListener("keydown", (e: KeyboardEvent) => {
   const isMac = navigator.platform.includes("Mac");
   const binding = settings!.bindings[captureTarget];
 
-  binding.key = e.key.toLowerCase();
+  // On Mac, Option+key produces special chars — extract letter from e.code
+  const codeKey = e.code.startsWith("Key") ? e.code.slice(3).toLowerCase() : null;
+  binding.key = (e.altKey && codeKey) ? codeKey : e.key.toLowerCase();
   binding.meta = isMac ? e.metaKey : e.ctrlKey;
   binding.ctrl = isMac ? e.ctrlKey : false;
   binding.alt = e.altKey;

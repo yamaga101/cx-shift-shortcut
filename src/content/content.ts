@@ -128,7 +128,10 @@ import type { Settings } from "../types";
         : true;
       const altMatch = binding.alt ? e.altKey : !e.altKey;
       const shiftMatch = binding.shift ? e.shiftKey : !e.shiftKey;
-      const keyMatch = e.key.toLowerCase() === binding.key.toLowerCase();
+      // On Mac, Option+key produces special chars (e.key="Dead"), so check e.code too
+      const keyMatch =
+        e.key.toLowerCase() === binding.key.toLowerCase() ||
+        e.code === "Key" + binding.key.toUpperCase();
 
       if (keyMatch && metaMatch && ctrlMatch && altMatch && shiftMatch) {
         e.preventDefault();
