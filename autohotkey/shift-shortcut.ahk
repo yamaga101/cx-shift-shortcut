@@ -21,7 +21,7 @@ UpdateTray() {
     global shiftPlannerMode
     if shiftPlannerMode {
         A_IconTip := "勤務表ショートカット (ON)"
-        TrayTip("勤務表モード ON", "Ctrl+E/W/Q が有効です`nF6 で解除", 1)
+        TrayTip("勤務表モード ON", "Ctrl+E/W/Q が有効です`nF8 で解除", 1)
     } else {
         A_IconTip := "勤務表ショートカット (OFF)"
         TrayTip("勤務表モード OFF", "通常のショートカットに戻りました", 1)
@@ -31,7 +31,7 @@ UpdateTray() {
 ; ── F6 トグル (Chrome 上のみ) ─────────────────────
 #HotIf WinActive("ahk_exe chrome.exe")
 
-F6:: {
+F8:: {
     global shiftPlannerMode
     shiftPlannerMode := !shiftPlannerMode
     UpdateTray()

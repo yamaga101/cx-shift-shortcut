@@ -65,17 +65,20 @@ import type { Settings } from "../types";
     topMenu.dispatchEvent(new MouseEvent("mouseup", { bubbles: true }));
     topMenu.dispatchEvent(new MouseEvent("click", { bubbles: true }));
 
-    await sleep(200);
-
-    const menuItems = document.querySelectorAll(
-      '.goog-menuitem-content, .apps-menuitem-label, [role="menuitem"] .goog-menuitem-content'
-    );
+    // Poll for menu item instead of fixed sleep
     let targetItem: Element | null = null;
-    for (const item of menuItems) {
-      if (item.textContent?.trim().includes(itemText)) {
-        targetItem = item.closest('.goog-menuitem, [role="menuitem"]') || item;
-        break;
+    for (let i = 0; i < 20; i++) {
+      const menuItems = document.querySelectorAll(
+        '.goog-menuitem-content, .apps-menuitem-label, [role="menuitem"] .goog-menuitem-content'
+      );
+      for (const item of menuItems) {
+        if (item.textContent?.trim().includes(itemText)) {
+          targetItem = item.closest('.goog-menuitem, [role="menuitem"]') || item;
+          break;
+        }
       }
+      if (targetItem) break;
+      await sleep(10);
     }
 
     if (!targetItem) {

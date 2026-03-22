@@ -4,13 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>勤務表ショートカット — 設定</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined:wght@300" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      font-family: system-ui, -apple-system, sans-serif;
       background: #f9f9fb;
       color: #1a1c1d;
       min-height: 100vh;
@@ -25,7 +22,7 @@
       align-items: center;
       gap: 12px;
     }
-    .page-header .material-symbols-outlined { font-size: 28px; }
+    .page-header .icon { font-size: 28px; }
     .page-header h1 { font-size: 18px; font-weight: 600; }
 
     /* Content */
@@ -48,7 +45,7 @@
       align-items: center;
       gap: 8px;
     }
-    .section-title .material-symbols-outlined { font-size: 18px; color: #767683; }
+    .section-title .icon { font-size: 18px; color: #767683; }
 
     /* Binding Table */
     .binding-table { width: 100%; border-collapse: collapse; }
@@ -77,7 +74,7 @@
       background: #e8e8ea;
       border: none;
       border-radius: 6px;
-      font-family: 'Inter', monospace;
+      font-family: ui-monospace, monospace;
       font-size: 13px;
       font-weight: 600;
       color: #1a1c1d;
@@ -115,7 +112,7 @@
       background: #e8e8ea;
       border: none;
       border-radius: 6px;
-      font-family: 'Noto Sans JP', sans-serif;
+      font-family: system-ui, sans-serif;
       font-size: 13px;
       color: #1a1c1d;
       outline: none;
@@ -192,7 +189,7 @@
     .modal-box h3 { font-size: 16px; margin-bottom: 8px; }
     .modal-box p { font-size: 13px; color: #767683; }
     .modal-box .captured-key {
-      font-family: 'Inter', monospace;
+      font-family: ui-monospace, monospace;
       font-size: 24px;
       font-weight: 600;
       color: #1a237e;
@@ -215,16 +212,11 @@
     }
     .toast.show { opacity: 1; transform: translateY(0); }
   </style>
-  <link rel="modulepreload" crossorigin href="data:text/javascript;base64,KGZ1bmN0aW9uKCl7Y29uc3QgdD1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCJsaW5rIikucmVsTGlzdDtpZih0JiZ0LnN1cHBvcnRzJiZ0LnN1cHBvcnRzKCJtb2R1bGVwcmVsb2FkIikpcmV0dXJuO2Zvcihjb25zdCBlIG9mIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJ2xpbmtbcmVsPSJtb2R1bGVwcmVsb2FkIl0nKSlpKGUpO25ldyBNdXRhdGlvbk9ic2VydmVyKGU9Pntmb3IoY29uc3QgciBvZiBlKWlmKHIudHlwZT09PSJjaGlsZExpc3QiKWZvcihjb25zdCBvIG9mIHIuYWRkZWROb2RlcylvLnRhZ05hbWU9PT0iTElOSyImJm8ucmVsPT09Im1vZHVsZXByZWxvYWQiJiZpKG8pfSkub2JzZXJ2ZShkb2N1bWVudCx7Y2hpbGRMaXN0OiEwLHN1YnRyZWU6ITB9KTtmdW5jdGlvbiBzKGUpe2NvbnN0IHI9e307cmV0dXJuIGUuaW50ZWdyaXR5JiYoci5pbnRlZ3JpdHk9ZS5pbnRlZ3JpdHkpLGUucmVmZXJyZXJQb2xpY3kmJihyLnJlZmVycmVyUG9saWN5PWUucmVmZXJyZXJQb2xpY3kpLGUuY3Jvc3NPcmlnaW49PT0idXNlLWNyZWRlbnRpYWxzIj9yLmNyZWRlbnRpYWxzPSJpbmNsdWRlIjplLmNyb3NzT3JpZ2luPT09ImFub255bW91cyI/ci5jcmVkZW50aWFscz0ib21pdCI6ci5jcmVkZW50aWFscz0ic2FtZS1vcmlnaW4iLHJ9ZnVuY3Rpb24gaShlKXtpZihlLmVwKXJldHVybjtlLmVwPSEwO2NvbnN0IHI9cyhlKTtmZXRjaChlLmhyZWYscil9fSkoKTsK">
-  <link rel="modulepreload" crossorigin href="data:text/javascript;base64,KGZ1bmN0aW9uKCl7Y29uc3Qgbz1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCJsaW5rIikucmVsTGlzdDtpZihvJiZvLnN1cHBvcnRzJiZvLnN1cHBvcnRzKCJtb2R1bGVwcmVsb2FkIikpcmV0dXJuO2Zvcihjb25zdCBlIG9mIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJ2xpbmtbcmVsPSJtb2R1bGVwcmVsb2FkIl0nKSlyKGUpO25ldyBNdXRhdGlvbk9ic2VydmVyKGU9Pntmb3IoY29uc3QgdCBvZiBlKWlmKHQudHlwZT09PSJjaGlsZExpc3QiKWZvcihjb25zdCBzIG9mIHQuYWRkZWROb2RlcylzLnRhZ05hbWU9PT0iTElOSyImJnMucmVsPT09Im1vZHVsZXByZWxvYWQiJiZyKHMpfSkub2JzZXJ2ZShkb2N1bWVudCx7Y2hpbGRMaXN0OiEwLHN1YnRyZWU6ITB9KTtmdW5jdGlvbiBuKGUpe2NvbnN0IHQ9e307cmV0dXJuIGUuaW50ZWdyaXR5JiYodC5pbnRlZ3JpdHk9ZS5pbnRlZ3JpdHkpLGUucmVmZXJyZXJQb2xpY3kmJih0LnJlZmVycmVyUG9saWN5PWUucmVmZXJyZXJQb2xpY3kpLGUuY3Jvc3NPcmlnaW49PT0idXNlLWNyZWRlbnRpYWxzIj90LmNyZWRlbnRpYWxzPSJpbmNsdWRlIjplLmNyb3NzT3JpZ2luPT09ImFub255bW91cyI/dC5jcmVkZW50aWFscz0ib21pdCI6dC5jcmVkZW50aWFscz0ic2FtZS1vcmlnaW4iLHR9ZnVuY3Rpb24gcihlKXtpZihlLmVwKXJldHVybjtlLmVwPSEwO2NvbnN0IHQ9bihlKTtmZXRjaChlLmhyZWYsdCl9fSkoKTsoZnVuY3Rpb24oKXtjb25zdCBpPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoImxpbmsiKS5yZWxMaXN0O2lmKGkmJmkuc3VwcG9ydHMmJmkuc3VwcG9ydHMoIm1vZHVsZXByZWxvYWQiKSlyZXR1cm47Zm9yKGNvbnN0IHIgb2YgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnbGlua1tyZWw9Im1vZHVsZXByZWxvYWQiXScpKW4ocik7bmV3IE11dGF0aW9uT2JzZXJ2ZXIocj0+e2Zvcihjb25zdCBlIG9mIHIpaWYoZS50eXBlPT09ImNoaWxkTGlzdCIpZm9yKGNvbnN0IHQgb2YgZS5hZGRlZE5vZGVzKXQudGFnTmFtZT09PSJMSU5LIiYmdC5yZWw9PT0ibW9kdWxlcHJlbG9hZCImJm4odCl9KS5vYnNlcnZlKGRvY3VtZW50LHtjaGlsZExpc3Q6ITAsc3VidHJlZTohMH0pO2Z1bmN0aW9uIG8ocil7Y29uc3QgZT17fTtyZXR1cm4gci5pbnRlZ3JpdHkmJihlLmludGVncml0eT1yLmludGVncml0eSksci5yZWZlcnJlclBvbGljeSYmKGUucmVmZXJyZXJQb2xpY3k9ci5yZWZlcnJlclBvbGljeSksci5jcm9zc09yaWdpbj09PSJ1c2UtY3JlZGVudGlhbHMiP2UuY3JlZGVudGlhbHM9ImluY2x1ZGUiOnIuY3Jvc3NPcmlnaW49PT0iYW5vbnltb3VzIj9lLmNyZWRlbnRpYWxzPSJvbWl0IjplLmNyZWRlbnRpYWxzPSJzYW1lLW9yaWdpbiIsZX1mdW5jdGlvbiBuKHIpe2lmKHIuZXApcmV0dXJuO3IuZXA9ITA7Y29uc3QgZT1vKHIpO2ZldGNoKHIuaHJlZixlKX19KSgpOwo=">
-  <link rel="modulepreload" crossorigin href="data:text/javascript;base64,KGZ1bmN0aW9uKCl7Y29uc3QgaT1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCJsaW5rIikucmVsTGlzdDtpZihpJiZpLnN1cHBvcnRzJiZpLnN1cHBvcnRzKCJtb2R1bGVwcmVsb2FkIikpcmV0dXJuO2Zvcihjb25zdCBlIG9mIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJ2xpbmtbcmVsPSJtb2R1bGVwcmVsb2FkIl0nKSlyKGUpO25ldyBNdXRhdGlvbk9ic2VydmVyKGU9Pntmb3IoY29uc3QgdCBvZiBlKWlmKHQudHlwZT09PSJjaGlsZExpc3QiKWZvcihjb25zdCBzIG9mIHQuYWRkZWROb2RlcylzLnRhZ05hbWU9PT0iTElOSyImJnMucmVsPT09Im1vZHVsZXByZWxvYWQiJiZyKHMpfSkub2JzZXJ2ZShkb2N1bWVudCx7Y2hpbGRMaXN0OiEwLHN1YnRyZWU6ITB9KTtmdW5jdGlvbiBuKGUpe2NvbnN0IHQ9e307cmV0dXJuIGUuaW50ZWdyaXR5JiYodC5pbnRlZ3JpdHk9ZS5pbnRlZ3JpdHkpLGUucmVmZXJyZXJQb2xpY3kmJih0LnJlZmVycmVyUG9saWN5PWUucmVmZXJyZXJQb2xpY3kpLGUuY3Jvc3NPcmlnaW49PT0idXNlLWNyZWRlbnRpYWxzIj90LmNyZWRlbnRpYWxzPSJpbmNsdWRlIjplLmNyb3NzT3JpZ2luPT09ImFub255bW91cyI/dC5jcmVkZW50aWFscz0ib21pdCI6dC5jcmVkZW50aWFscz0ic2FtZS1vcmlnaW4iLHR9ZnVuY3Rpb24gcihlKXtpZihlLmVwKXJldHVybjtlLmVwPSEwO2NvbnN0IHQ9bihlKTtmZXRjaChlLmhyZWYsdCl9fSkoKTsoZnVuY3Rpb24oKXtjb25zdCBvPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoImxpbmsiKS5yZWxMaXN0O2lmKG8mJm8uc3VwcG9ydHMmJm8uc3VwcG9ydHMoIm1vZHVsZXByZWxvYWQiKSlyZXR1cm47Zm9yKGNvbnN0IHIgb2YgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnbGlua1tyZWw9Im1vZHVsZXByZWxvYWQiXScpKW4ocik7bmV3IE11dGF0aW9uT2JzZXJ2ZXIocj0+e2Zvcihjb25zdCBlIG9mIHIpaWYoZS50eXBlPT09ImNoaWxkTGlzdCIpZm9yKGNvbnN0IHQgb2YgZS5hZGRlZE5vZGVzKXQudGFnTmFtZT09PSJMSU5LIiYmdC5yZWw9PT0ibW9kdWxlcHJlbG9hZCImJm4odCl9KS5vYnNlcnZlKGRvY3VtZW50LHtjaGlsZExpc3Q6ITAsc3VidHJlZTohMH0pO2Z1bmN0aW9uIGkocil7Y29uc3QgZT17fTtyZXR1cm4gci5pbnRlZ3JpdHkmJihlLmludGVncml0eT1yLmludGVncml0eSksci5yZWZlcnJlclBvbGljeSYmKGUucmVmZXJyZXJQb2xpY3k9ci5yZWZlcnJlclBvbGljeSksci5jcm9zc09yaWdpbj09PSJ1c2UtY3JlZGVudGlhbHMiP2UuY3JlZGVudGlhbHM9ImluY2x1ZGUiOnIuY3Jvc3NPcmlnaW49PT0iYW5vbnltb3VzIj9lLmNyZWRlbnRpYWxzPSJvbWl0IjplLmNyZWRlbnRpYWxzPSJzYW1lLW9yaWdpbiIsZX1mdW5jdGlvbiBuKHIpe2lmKHIuZXApcmV0dXJuO3IuZXA9ITA7Y29uc3QgZT1pKHIpO2ZldGNoKHIuaHJlZixlKX19KSgpOyhmdW5jdGlvbigpe2NvbnN0IG89ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgibGluayIpLnJlbExpc3Q7aWYobyYmby5zdXBwb3J0cyYmby5zdXBwb3J0cygibW9kdWxlcHJlbG9hZCIpKXJldHVybjtmb3IoY29uc3QgciBvZiBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCdsaW5rW3JlbD0ibW9kdWxlcHJlbG9hZCJdJykpbihyKTtuZXcgTXV0YXRpb25PYnNlcnZlcihyPT57Zm9yKGNvbnN0IGUgb2YgcilpZihlLnR5cGU9PT0iY2hpbGRMaXN0Iilmb3IoY29uc3QgdCBvZiBlLmFkZGVkTm9kZXMpdC50YWdOYW1lPT09IkxJTksiJiZ0LnJlbD09PSJtb2R1bGVwcmVsb2FkIiYmbih0KX0pLm9ic2VydmUoZG9jdW1lbnQse2NoaWxkTGlzdDohMCxzdWJ0cmVlOiEwfSk7ZnVuY3Rpb24gaShyKXtjb25zdCBlPXt9O3JldHVybiByLmludGVncml0eSYmKGUuaW50ZWdyaXR5PXIuaW50ZWdyaXR5KSxyLnJlZmVycmVyUG9saWN5JiYoZS5yZWZlcnJlclBvbGljeT1yLnJlZmVycmVyUG9saWN5KSxyLmNyb3NzT3JpZ2luPT09InVzZS1jcmVkZW50aWFscyI/ZS5jcmVkZW50aWFscz0iaW5jbHVkZSI6ci5jcm9zc09yaWdpbj09PSJhbm9ueW1vdXMiP2UuY3JlZGVudGlhbHM9Im9taXQiOmUuY3JlZGVudGlhbHM9InNhbWUtb3JpZ2luIixlfWZ1bmN0aW9uIG4ocil7aWYoci5lcClyZXR1cm47ci5lcD0hMDtjb25zdCBlPWkocik7ZmV0Y2goci5ocmVmLGUpfX0pKCk7Cg==">
-  <link rel="modulepreload" crossorigin href="data:text/javascript;base64,KGZ1bmN0aW9uKCl7Y29uc3Qgbj1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCJsaW5rIikucmVsTGlzdDtpZihuJiZuLnN1cHBvcnRzJiZuLnN1cHBvcnRzKCJtb2R1bGVwcmVsb2FkIikpcmV0dXJuO2Zvcihjb25zdCBlIG9mIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJ2xpbmtbcmVsPSJtb2R1bGVwcmVsb2FkIl0nKSlyKGUpO25ldyBNdXRhdGlvbk9ic2VydmVyKGU9Pntmb3IoY29uc3QgdCBvZiBlKWlmKHQudHlwZT09PSJjaGlsZExpc3QiKWZvcihjb25zdCBzIG9mIHQuYWRkZWROb2RlcylzLnRhZ05hbWU9PT0iTElOSyImJnMucmVsPT09Im1vZHVsZXByZWxvYWQiJiZyKHMpfSkub2JzZXJ2ZShkb2N1bWVudCx7Y2hpbGRMaXN0OiEwLHN1YnRyZWU6ITB9KTtmdW5jdGlvbiBpKGUpe2NvbnN0IHQ9e307cmV0dXJuIGUuaW50ZWdyaXR5JiYodC5pbnRlZ3JpdHk9ZS5pbnRlZ3JpdHkpLGUucmVmZXJyZXJQb2xpY3kmJih0LnJlZmVycmVyUG9saWN5PWUucmVmZXJyZXJQb2xpY3kpLGUuY3Jvc3NPcmlnaW49PT0idXNlLWNyZWRlbnRpYWxzIj90LmNyZWRlbnRpYWxzPSJpbmNsdWRlIjplLmNyb3NzT3JpZ2luPT09ImFub255bW91cyI/dC5jcmVkZW50aWFscz0ib21pdCI6dC5jcmVkZW50aWFscz0ic2FtZS1vcmlnaW4iLHR9ZnVuY3Rpb24gcihlKXtpZihlLmVwKXJldHVybjtlLmVwPSEwO2NvbnN0IHQ9aShlKTtmZXRjaChlLmhyZWYsdCl9fSkoKTsoZnVuY3Rpb24oKXtjb25zdCBvPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoImxpbmsiKS5yZWxMaXN0O2lmKG8mJm8uc3VwcG9ydHMmJm8uc3VwcG9ydHMoIm1vZHVsZXByZWxvYWQiKSlyZXR1cm47Zm9yKGNvbnN0IHIgb2YgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnbGlua1tyZWw9Im1vZHVsZXByZWxvYWQiXScpKWkocik7bmV3IE11dGF0aW9uT2JzZXJ2ZXIocj0+e2Zvcihjb25zdCBlIG9mIHIpaWYoZS50eXBlPT09ImNoaWxkTGlzdCIpZm9yKGNvbnN0IHQgb2YgZS5hZGRlZE5vZGVzKXQudGFnTmFtZT09PSJMSU5LIiYmdC5yZWw9PT0ibW9kdWxlcHJlbG9hZCImJmkodCl9KS5vYnNlcnZlKGRvY3VtZW50LHtjaGlsZExpc3Q6ITAsc3VidHJlZTohMH0pO2Z1bmN0aW9uIG4ocil7Y29uc3QgZT17fTtyZXR1cm4gci5pbnRlZ3JpdHkmJihlLmludGVncml0eT1yLmludGVncml0eSksci5yZWZlcnJlclBvbGljeSYmKGUucmVmZXJyZXJQb2xpY3k9ci5yZWZlcnJlclBvbGljeSksci5jcm9zc09yaWdpbj09PSJ1c2UtY3JlZGVudGlhbHMiP2UuY3JlZGVudGlhbHM9ImluY2x1ZGUiOnIuY3Jvc3NPcmlnaW49PT0iYW5vbnltb3VzIj9lLmNyZWRlbnRpYWxzPSJvbWl0IjplLmNyZWRlbnRpYWxzPSJzYW1lLW9yaWdpbiIsZX1mdW5jdGlvbiBpKHIpe2lmKHIuZXApcmV0dXJuO3IuZXA9ITA7Y29uc3QgZT1uKHIpO2ZldGNoKHIuaHJlZixlKX19KSgpOyhmdW5jdGlvbigpe2NvbnN0IG89ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgibGluayIpLnJlbExpc3Q7aWYobyYmby5zdXBwb3J0cyYmby5zdXBwb3J0cygibW9kdWxlcHJlbG9hZCIpKXJldHVybjtmb3IoY29uc3QgciBvZiBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCdsaW5rW3JlbD0ibW9kdWxlcHJlbG9hZCJdJykpaShyKTtuZXcgTXV0YXRpb25PYnNlcnZlcihyPT57Zm9yKGNvbnN0IGUgb2YgcilpZihlLnR5cGU9PT0iY2hpbGRMaXN0Iilmb3IoY29uc3QgdCBvZiBlLmFkZGVkTm9kZXMpdC50YWdOYW1lPT09IkxJTksiJiZ0LnJlbD09PSJtb2R1bGVwcmVsb2FkIiYmaSh0KX0pLm9ic2VydmUoZG9jdW1lbnQse2NoaWxkTGlzdDohMCxzdWJ0cmVlOiEwfSk7ZnVuY3Rpb24gbihyKXtjb25zdCBlPXt9O3JldHVybiByLmludGVncml0eSYmKGUuaW50ZWdyaXR5PXIuaW50ZWdyaXR5KSxyLnJlZmVycmVyUG9saWN5JiYoZS5yZWZlcnJlclBvbGljeT1yLnJlZmVycmVyUG9saWN5KSxyLmNyb3NzT3JpZ2luPT09InVzZS1jcmVkZW50aWFscyI/ZS5jcmVkZW50aWFscz0iaW5jbHVkZSI6ci5jcm9zc09yaWdpbj09PSJhbm9ueW1vdXMiP2UuY3JlZGVudGlhbHM9Im9taXQiOmUuY3JlZGVudGlhbHM9InNhbWUtb3JpZ2luIixlfWZ1bmN0aW9uIGkocil7aWYoci5lcClyZXR1cm47ci5lcD0hMDtjb25zdCBlPW4ocik7ZmV0Y2goci5ocmVmLGUpfX0pKCk7KGZ1bmN0aW9uKCl7Y29uc3Qgbz1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCJsaW5rIikucmVsTGlzdDtpZihvJiZvLnN1cHBvcnRzJiZvLnN1cHBvcnRzKCJtb2R1bGVwcmVsb2FkIikpcmV0dXJuO2Zvcihjb25zdCByIG9mIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJ2xpbmtbcmVsPSJtb2R1bGVwcmVsb2FkIl0nKSlpKHIpO25ldyBNdXRhdGlvbk9ic2VydmVyKHI9Pntmb3IoY29uc3QgZSBvZiByKWlmKGUudHlwZT09PSJjaGlsZExpc3QiKWZvcihjb25zdCB0IG9mIGUuYWRkZWROb2Rlcyl0LnRhZ05hbWU9PT0iTElOSyImJnQucmVsPT09Im1vZHVsZXByZWxvYWQiJiZpKHQpfSkub2JzZXJ2ZShkb2N1bWVudCx7Y2hpbGRMaXN0OiEwLHN1YnRyZWU6ITB9KTtmdW5jdGlvbiBuKHIpe2NvbnN0IGU9e307cmV0dXJuIHIuaW50ZWdyaXR5JiYoZS5pbnRlZ3JpdHk9ci5pbnRlZ3JpdHkpLHIucmVmZXJyZXJQb2xpY3kmJihlLnJlZmVycmVyUG9saWN5PXIucmVmZXJyZXJQb2xpY3kpLHIuY3Jvc3NPcmlnaW49PT0idXNlLWNyZWRlbnRpYWxzIj9lLmNyZWRlbnRpYWxzPSJpbmNsdWRlIjpyLmNyb3NzT3JpZ2luPT09ImFub255bW91cyI/ZS5jcmVkZW50aWFscz0ib21pdCI6ZS5jcmVkZW50aWFscz0ic2FtZS1vcmlnaW4iLGV9ZnVuY3Rpb24gaShyKXtpZihyLmVwKXJldHVybjtyLmVwPSEwO2NvbnN0IGU9bihyKTtmZXRjaChyLmhyZWYsZSl9fSkoKTsK">
-  <script type="module" crossorigin src="/assets/index.html-Fb3_pvd_.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX-ulV_1b7r-BGxEsOWE-glEpLKVF-Ch0fsPTR.js">
+  <script type="module" crossorigin src="/assets/index.html-RlkfHCzK.js"></script>
 </head>
 <body>
   <div class="page-header">
-    <span class="material-symbols-outlined">directions_bus</span>
+    <span style="font-size:28px">🚌</span>
     <h1>勤務表ショートカット — 設定</h1>
   </div>
 
@@ -232,7 +224,7 @@
     <!-- Section 1: Key Bindings -->
     <div class="section">
       <div class="section-title">
-        <span class="material-symbols-outlined">keyboard</span>
+        <span>⌨️</span>
         キーバインド設定
       </div>
       <table class="binding-table">
@@ -252,7 +244,7 @@
     <!-- Section 2: Target Menu -->
     <div class="section">
       <div class="section-title">
-        <span class="material-symbols-outlined">menu</span>
+        <span>📋</span>
         対象メニュー
       </div>
       <div class="input-group">
@@ -265,7 +257,7 @@
     <!-- Section 3: Behavior -->
     <div class="section">
       <div class="section-title">
-        <span class="material-symbols-outlined">tune</span>
+        <span>🔧</span>
         動作設定
       </div>
       <div class="checkbox-row">

@@ -5,7 +5,7 @@ export default defineManifest({
   name: "勤務表ショートカット",
   description:
     "Google Sheetsの勤務表システムにカスタムキーボードショートカットを追加",
-  version: "1.0.0",
+  version: "1.2.0",
   icons: {
     "16": "public/icons/icon16.png",
     "48": "public/icons/icon48.png",

@@ -7,5 +7,6 @@ export default defineConfig({
   build: {
     outDir: ".",
     emptyOutDir: false,
+    modulePreload: false,
   },
 });
