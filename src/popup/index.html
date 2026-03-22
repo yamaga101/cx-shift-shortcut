@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>勤務表ショートカット</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined:wght@300" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 340px;
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      background: #f9f9fb;
+      color: #1a1c1d;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #000666, #1a237e);
+      color: #fff;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header .material-symbols-outlined { font-size: 24px; }
+    .header h1 { font-size: 15px; font-weight: 600; letter-spacing: 0.5px; }
+
+    /* Toggle */
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: #f3f3f5;
+    }
+    .toggle-label { font-size: 13px; font-weight: 500; color: #454652; }
+    .toggle-switch {
+      position: relative; width: 44px; height: 24px;
+      background: #e2e2e4; border-radius: 12px;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .toggle-switch.on { background: #1a237e; }
+    .toggle-switch .thumb {
+      position: absolute; top: 2px; left: 2px;
+      width: 20px; height: 20px; border-radius: 10px;
+      background: #fff; transition: transform 0.2s;
+    }
+    .toggle-switch.on .thumb { transform: translateX(20px); }
+
+    /* Shortcut List */
+    .shortcuts { padding: 12px 16px; }
+    .shortcut-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      transition: box-shadow 0.2s;
+    }
+    .shortcut-card:hover {
+      box-shadow: 0 4px 20px rgba(26,28,29,0.06);
+    }
+    .shortcut-card:last-child { margin-bottom: 0; }
+    .shortcut-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .shortcut-icon.swap { background: #e0e0ff; color: #343d96; }
+    .shortcut-icon.unassigned { background: #a3f69c; color: #005312; }
+    .shortcut-icon.finalize { background: #ffdbca; color: #773200; }
+
+    .shortcut-info { flex: 1; }
+    .shortcut-name { font-size: 13px; font-weight: 500; }
+    .shortcut-desc { font-size: 11px; color: #767683; margin-top: 2px; }
+
+    .key-badge {
+      font-family: 'Inter', monospace;
+      font-size: 11px; font-weight: 600;
+      padding: 4px 10px; border-radius: 999px;
+      letter-spacing: 0.5px;
+    }
+    .key-badge.blue { background: #e0e0ff; color: #343d96; }
+    .key-badge.green { background: #a3f69c; color: #005312; }
+    .key-badge.orange { background: #ffdbca; color: #773200; }
+
+    /* Footer */
+    .footer {
+      padding: 12px 20px;
+      background: #d9dadc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .footer:hover { background: #cfd0d2; }
+    .footer span { font-size: 12px; color: #454652; }
+    .footer .material-symbols-outlined { font-size: 16px; color: #454652; }
+
+    /* Disabled state */
+    body.disabled .shortcuts { opacity: 0.4; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="material-symbols-outlined">directions_bus</span>
+    <h1>勤務表ショートカット</h1>
+  </div>
+
+  <div class="toggle-row">
+    <span class="toggle-label">ショートカット有効</span>
+    <div class="toggle-switch on" id="toggle">
+      <div class="thumb"></div>
+    </div>
+  </div>
+
+  <div class="shortcuts" id="shortcutList">
+    <!-- Populated by JS -->
+  </div>
+
+  <div class="footer" id="openOptions">
+    <span class="material-symbols-outlined">settings</span>
+    <span>設定で変更可能</span>
+  </div>
+
+  <script type="module" src="./popup.ts"></script>
+</body>
+</html>

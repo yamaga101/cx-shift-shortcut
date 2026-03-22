@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>勤務表ショートカット — 設定</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined:wght@300" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      background: #f9f9fb;
+      color: #1a1c1d;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .page-header {
+      background: linear-gradient(135deg, #000666, #1a237e);
+      color: #fff;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .page-header .material-symbols-outlined { font-size: 28px; }
+    .page-header h1 { font-size: 18px; font-weight: 600; }
+
+    /* Content */
+    .content { max-width: 720px; margin: 24px auto; padding: 0 24px; }
+
+    /* Section Card */
+    .section {
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .section:hover { box-shadow: 0 4px 20px rgba(26,28,29,0.06); }
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #454652;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title .material-symbols-outlined { font-size: 18px; color: #767683; }
+
+    /* Binding Table */
+    .binding-table { width: 100%; border-collapse: collapse; }
+    .binding-table th {
+      font-size: 11px;
+      font-weight: 500;
+      color: #767683;
+      text-align: left;
+      padding: 0 12px 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .binding-table td { padding: 10px 12px; vertical-align: middle; }
+    .binding-table tr { transition: background 0.15s; }
+    .binding-table tbody tr:hover { background: #f3f3f5; border-radius: 8px; }
+
+    .fn-name { font-size: 13px; font-weight: 500; }
+    .fn-desc { font-size: 11px; color: #767683; margin-top: 2px; }
+
+    /* Key Cap Button */
+    .key-cap {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 14px;
+      background: #e8e8ea;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Inter', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a1c1d;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 0 #c6c5d4;
+    }
+    .key-cap:hover { background: #e0e0ff; box-shadow: 0 2px 0 #bdc2ff; }
+    .key-cap:active { box-shadow: none; transform: translateY(1px); }
+
+    .btn-reset {
+      background: none;
+      border: none;
+      font-size: 12px;
+      color: #767683;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .btn-reset:hover { background: #f3f3f5; color: #1a1c1d; }
+
+    /* Input Field */
+    .input-group { margin-bottom: 8px; }
+    .input-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: #454652;
+      margin-bottom: 6px;
+    }
+    .input-group input[type="text"] {
+      width: 100%;
+      max-width: 320px;
+      padding: 8px 12px;
+      background: #e8e8ea;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px;
+      color: #1a1c1d;
+      outline: none;
+    }
+    .input-group input:focus { background: #e0e0ff; }
+    .help-text { font-size: 11px; color: #767683; margin-top: 4px; }
+
+    /* Checkbox Row */
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+    }
+    .checkbox-row input[type="checkbox"] {
+      width: 16px; height: 16px;
+      accent-color: #1a237e;
+      cursor: pointer;
+    }
+    .checkbox-row label {
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      padding: 16px 0;
+    }
+    .btn-primary {
+      background: #1a237e;
+      color: #fff;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #000666; }
+    .btn-secondary {
+      background: #e8e8ea;
+      color: #454652;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: #d9dadc; }
+
+    /* Key Capture Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px 40px;
+      text-align: center;
+      animation: pulse-border 1.5s ease-in-out infinite;
+      border: 2px solid #1a237e;
+    }
+    .modal-box h3 { font-size: 16px; margin-bottom: 8px; }
+    .modal-box p { font-size: 13px; color: #767683; }
+    .modal-box .captured-key {
+      font-family: 'Inter', monospace;
+      font-size: 24px;
+      font-weight: 600;
+      color: #1a237e;
+      margin-top: 16px;
+      min-height: 36px;
+    }
+    @keyframes pulse-border {
+      0%, 100% { border-color: #1a237e; }
+      50% { border-color: #bdc2ff; }
+    }
+
+    .toast {
+      position: fixed; bottom: 24px; right: 24px;
+      background: #1a237e; color: #fff;
+      padding: 12px 20px; border-radius: 8px;
+      font-size: 13px;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 10000;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <span class="material-symbols-outlined">directions_bus</span>
+    <h1>勤務表ショートカット — 設定</h1>
+  </div>
+
+  <div class="content">
+    <!-- Section 1: Key Bindings -->
+    <div class="section">
+      <div class="section-title">
+        <span class="material-symbols-outlined">keyboard</span>
+        キーバインド設定
+      </div>
+      <table class="binding-table">
+        <thead>
+          <tr>
+            <th>機能</th>
+            <th>ショートカット</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="bindingTableBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 2: Target Menu -->
+    <div class="section">
+      <div class="section-title">
+        <span class="material-symbols-outlined">menu</span>
+        対象メニュー
+      </div>
+      <div class="input-group">
+        <label for="menuName">メニュー名</label>
+        <input type="text" id="menuName" value="勤務表システム">
+        <div class="help-text">GASカスタムメニューの名前を指定してください</div>
+      </div>
+    </div>
+
+    <!-- Section 3: Behavior -->
+    <div class="section">
+      <div class="section-title">
+        <span class="material-symbols-outlined">tune</span>
+        動作設定
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="sheetsOnly" checked>
+        <label for="sheetsOnly">Google Sheets 以外では無効にする</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showToast" checked>
+        <label for="showToast">ショートカット実行時にトースト通知を表示する</label>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="btn-secondary" id="btnReset">初期値に戻す</button>
+      <button class="btn-primary" id="btnSave">保存</button>
+    </div>
+  </div>
+
+  <!-- Key Capture Modal -->
+  <div class="modal-overlay" id="keyCaptureModal">
+    <div class="modal-box">
+      <h3>新しいキーを押してください...</h3>
+      <p>修飾キー（⌘ / Ctrl / Alt / Shift）+ 文字キー</p>
+      <div class="captured-key" id="capturedKeyDisplay"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script type="module" src="./options.ts"></script>
+</body>
+</html>
